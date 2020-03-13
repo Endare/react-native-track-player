@@ -132,6 +132,10 @@ public class LocalPlayback extends ExoPlayback<SimpleExoPlayer> {
     }
 
     private void resetQueue() {
+        int queueSize = 0;
+        if (queue != null) {
+            queueSize = queue.size();
+        }
         queue.clear();
 
         source = new ConcatenatingMediaSource();
@@ -141,7 +145,9 @@ public class LocalPlayback extends ExoPlayback<SimpleExoPlayer> {
         lastKnownWindow = C.INDEX_UNSET;
         lastKnownPosition = C.POSITION_UNSET;
 
-        manager.onReset();
+        if (queueSize > 0) {
+            manager.onReset();
+        }
     }
 
     @Override
