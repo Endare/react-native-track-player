@@ -157,7 +157,7 @@ public class MetadataManager {
         String ns = Context.NOTIFICATION_SERVICE;
         Context context = service.getApplicationContext();
         NotificationManager manager = (NotificationManager) context.getSystemService(ns);
-        manager.cancelAll();
+        manager.cancel(1);
     }
 
     /**
